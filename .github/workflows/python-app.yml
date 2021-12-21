@@ -54,4 +54,3 @@ jobs:
         node-version: "12"
     - run: npm install -g cspell
     - run: cspell --config ./cSpell.json "**/*.py"
-      working-directory: ./backend
