@@ -41,6 +41,10 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         poetry run flake8 app/ --exclude .venv,app/migrations/versions/ --count --exit-zero --max-complexity=10 --max-line-length=127 --show-source --statistics
       working-directory: ./backend
+    - name: Code Check with bandit
+      run: |
+        poetry run bandit -x ./.venv,./.tox,./tests -r ./
+      working-directory: ./backend
 
   spellchecking:
 

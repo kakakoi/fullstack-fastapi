@@ -1,5 +1,12 @@
 .venv
 .envrc
+.coverage
+.tox
+.env
+
+__pycache__
+.mypy_cache
+
 
 postgres
 pgadmin
