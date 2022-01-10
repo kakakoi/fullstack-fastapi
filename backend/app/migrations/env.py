@@ -1,9 +1,7 @@
 from logging.config import fileConfig
 
 from alembic import context
-
-# 追記
-from core.config import settings
+from core.config import settings  # 追記
 from models import metadata
 from sqlalchemy import engine_from_config, pool
 

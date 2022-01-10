@@ -222,7 +222,8 @@
         "venv",
         "isort",
         "DBAPI",
-        "httpx"
+        "httpx",
+        "mypy"
     ],
     "ignoreWords": [
         "seankilleen",
