@@ -209,7 +209,20 @@
         "xluh",
         "yada",
         "Yuuup",
-        "Zikmund"
+        "Zikmund",
+        "pytest",
+        "APICLUSTER",
+        "fastapi",
+        "kakakoi",
+        "starlette",
+        "pydantic",
+        "paramstyle",
+        "mymodel",
+        "myapp",
+        "venv",
+        "isort",
+        "DBAPI",
+        "httpx"
     ],
     "ignoreWords": [
         "seankilleen",
