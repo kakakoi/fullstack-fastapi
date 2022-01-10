@@ -9,6 +9,13 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
       - id: detect-private-key
+  - repo: https://github.com/ambv/black
+    rev: 21.12b0
+    hooks:
+      - id: black
+        verbose: true
+        additional_dependencies: [toml]
+
   - repo: https://gitlab.com/pycqa/flake8
     rev: 3.9.2
     hooks:
@@ -33,14 +40,6 @@ repos:
       - id: isort
         verbose: true
         additional_dependencies: [toml]
-
-  - repo: https://github.com/ambv/black
-    rev: 21.12b0
-    hooks:
-      - id: black
-        verbose: true
-        additional_dependencies: [toml]
-
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v5.6.11
     hooks:
