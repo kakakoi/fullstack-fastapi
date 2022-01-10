@@ -1,5 +1,4 @@
 import sqlalchemy as sa
-
 from app.db.connect import metadata
 
 user = sa.Table(

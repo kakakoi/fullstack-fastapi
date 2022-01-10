@@ -1,11 +1,10 @@
-from databases import Database
-from fastapi import FastAPI
-from fastapi.logger import logger
-
 from app.api.api_v1.api import api_router
 from app.api.root import root_router
 from app.core.config import settings
 from app.db.connect import DB, ENGINE, metadata
+from databases import Database
+from fastapi import FastAPI
+from fastapi.logger import logger
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -25,7 +24,7 @@ except Exception as e:
     setattr(root_router, "state_message", "Exception: Init server process")
 
 else:
-    logger.info(f"Finished: Init server process ")
+    logger.info("Finished: Init server process ")
     setattr(root_router, "state_message", "running")
 
 

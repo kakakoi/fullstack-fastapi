@@ -1,10 +1,9 @@
 import os
 
 import sqlalchemy
+from app.core.config import settings
 from databases import Database
 from fastapi import HTTPException, status
-
-from app.core.config import settings
 
 
 def remove_sqlite_file():

@@ -1,6 +1,5 @@
 import pytest
 import starlette.status
-
 from app.core.config import settings
 from tests.validate import validate_iso8601
 

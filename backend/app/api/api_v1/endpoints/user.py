@@ -1,11 +1,10 @@
 from typing import List
 
-from databases.core import Database as DB
-from fastapi import APIRouter, Depends
-
 from app.cruds import user as crud
 from app.db.connect import get_db
 from app.schemas import user as schema
+from databases.core import Database as DB
+from fastapi import APIRouter, Depends
 
 router = APIRouter()
 

@@ -1,6 +1,5 @@
+from app.db.connect import ENGINE, metadata
 from fastapi.applications import FastAPI
-
-from app.db.connect import DB, ENGINE, metadata
 
 
 def init_db(app: FastAPI):

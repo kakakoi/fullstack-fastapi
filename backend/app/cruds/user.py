@@ -1,10 +1,9 @@
 from datetime import datetime
 from typing import List
 
-from databases.core import Database
-
 from app.models.user import user as model
 from app.schemas import user as schema
+from databases.core import Database
 
 
 async def get_user(db: Database, email: str) -> schema.User:
