@@ -6,7 +6,10 @@
 
 __pycache__
 .mypy_cache
-
+.pytest_cache
 
 postgres
 pgadmin
+
+backend/database.db
+backend/app/migrations/versions/**.py

@@ -17,3 +17,6 @@ $ git commit -m "[add] copilot pipeline"
 $ git push -u origin main
 $ copilot pipeline update
 ```
+```bash
+$ poetry run tox
+```

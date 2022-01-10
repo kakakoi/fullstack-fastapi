@@ -1,30 +1,39 @@
-import json
-import os
-
-import databases
-import sqlalchemy
+from databases import Database
 from fastapi import FastAPI
+from fastapi.logger import logger
 
-app = FastAPI()
+from app.api.api_v1.api import api_router
+from app.api.root import root_router
+from app.core.config import settings
+from app.db.connect import DB, ENGINE, metadata
 
-
-SECRET_NAME = "APICLUSTER_SECRET"  # nosec
-SECRET_JSON = json.loads(os.environ[SECRET_NAME])
-DATABASE = "postgresql"
-USER = SECRET_JSON["username"]
-PASSWORD = SECRET_JSON["password"]
-HOST = SECRET_JSON["host"]
-PORT = SECRET_JSON["port"]
-DB_NAME = SECRET_JSON["dbname"]
-DATABASE_URL = "{}://{}:{}@{}:{}/{}".format(
-    DATABASE, USER, PASSWORD, HOST, PORT, DB_NAME
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
+    description=settings.DESCRIPTION_TXT,
 )
 
-DB = databases.Database(DATABASE_URL, min_size=0, max_size=50)
 
-ENGINE = sqlalchemy.create_engine(DATABASE_URL)
+try:
+    # root_router is state_message
+    app.include_router(root_router)
+    app.include_router(api_router, prefix=settings.API_V1_STR)
+    metadata.create_all(ENGINE)
+
+except Exception as e:
+    logger.error(f"EXCEPTION: {e}")
+    setattr(root_router, "state_message", "Exception: Init server process")
+
+else:
+    logger.info(f"Finished: Init server process ")
+    setattr(root_router, "state_message", "running")
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+@app.on_event("startup")
+async def startup():
+    if type(DB) is Database:
+        try:
+            await DB.connect()
+        except Exception as e:
+            logger.error(f"EXCEPTION: {e}")
+            setattr(root_router, "state_message", "Failed to Load: Startup event")

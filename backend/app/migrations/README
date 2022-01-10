@@ -1,0 +1,7 @@
+Generic single-database configuration.
+
+```bash
+$ alembic revision --autogenerate -m 'create table'
+
+$ alembic upgrade head
+```
