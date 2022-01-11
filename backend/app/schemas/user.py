@@ -9,5 +9,9 @@ class UserIn(BaseModel):
     user_name: str = Field(max_length=100)
 
 
+class UserUpdate(UserIn):
+    pass
+
+
 class User(UserIn):
     created_at: datetime.datetime

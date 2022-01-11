@@ -223,7 +223,8 @@
         "isort",
         "DBAPI",
         "httpx",
-        "mypy"
+        "mypy",
+        "jsonable"
     ],
     "ignoreWords": [
         "seankilleen",
